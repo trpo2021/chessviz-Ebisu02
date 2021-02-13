@@ -65,6 +65,7 @@ void fillAndSetBoard(int board[8][8])
     FILE* html_file;
     html_file = fopen("index.html", "w+");
     fprintf(html_file, "<!DOCTYPE html>\n<html>\n<head>\n\t<title>Шахматы</title>\n\t<meta charset=\"utf-8\">\n\t<title>Chess</title>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n\t<link rel=\"shortcut icon\" href=\"https://image.flaticon.com/icons/png/512/32/32658.png\"/>\n\t<script src=\"\"></script>\n\t</head>\n<body>\n\t");
+    fprintf(html_file, "\n\t<div class = \"board\">");
     for (int i = 0; i < 8; ++i) {
         Flag = !(Flag);
         for (int j = 0; j < 8; ++j) {
@@ -77,7 +78,7 @@ void fillAndSetBoard(int board[8][8])
             Flag = !(Flag);
         }
     }
-    fprintf(html_file, "\n</body>\n</html>");
+    fprintf(html_file, "\n\t</div>\n</body>\n</html>");
     return;
 }
 
