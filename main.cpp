@@ -4,7 +4,7 @@
 using namespace std;
 
 bool Flag = false; // true = white, false = black
-int board[][]
+int board[8][8]
         = {{1, 2, 3, 4, 5, 3, 2, 1},
            {6, 6, 6, 6, 6, 6, 6, 6},
            {0, 0, 0, 0, 0, 0, 0, 0},
@@ -18,11 +18,13 @@ void setFigures(int numFigure, FILE* html_file)
 {
     switch (numFigure) {
     case 0:
-        fprintf(html_file, "");
+        fprintf(html_file, " ");
         break;
     case 1:
         fprintf(html_file, "&#9814");
-        break case 2 : fprintf(html_file, "&#9816");
+        break;
+    case 2:
+        fprintf(html_file, "&#9816");
         break;
     case 3:
         fprintf(html_file, "&#9815");
@@ -79,6 +81,6 @@ void fillAndSetBoard(int board[8][8])
 
 int main()
 {
-    fillAndSetBoard(board[8][8]);
+    fillAndSetBoard(board);
     return 0;
 }
