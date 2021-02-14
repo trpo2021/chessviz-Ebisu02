@@ -2,6 +2,9 @@
   width: 640px;
   height: 640px;
   border: 10px solid;
+  display: block;
+  margin: auto;
+  margin-top: 7%;
 }
 .square {
   float: left;
