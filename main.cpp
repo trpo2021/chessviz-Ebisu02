@@ -3,79 +3,79 @@
 
 using namespace std;
 
-bool Flag = false; // true = white, false = black
-int board[8][8]
-        = {{1, 2, 3, 4, 5, 3, 2, 1},
-           {6, 6, 6, 6, 6, 6, 6, 6},
-           {0, 0, 0, 0, 0, 0, 0, 0},
-           {0, 0, 0, 0, 0, 0, 0, 0},
-           {0, 0, 0, 0, 0, 0, 0, 0},
-           {0, 0, 0, 0, 0, 0, 0, 0},
-           {7, 7, 7, 7, 7, 7, 7, 7},
-           {8, 9, 10, 11, 12, 10, 9, 8}};
+char board[8][8]
+        = {{'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+           {'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+           {'0', '0', '0', '0', '0', '0', '0', '0'},
+           {'0', '0', '0', '0', '0', '0', '0', '0'},// R - ladya, Q - ferz, K - King
+           {'0', '0', '0', '0', '0', '0', '0', '0'},// N - Horse, B - slon,
+           {'0', '0', '0', '0', '0', '0', '0', '0'},
+           {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+           {'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'}};
 
 void setFigures(int numFigure, FILE* html_file)
 {
     switch (numFigure) {
-    case 0:
+    case '0':
         fprintf(html_file, " ");
         break;
-    case 1:
+    case 'R':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9814;</div>");
         break;
-    case 2:
+    case 'N':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9816;</div>");
         break;
-    case 3:
+    case 'B':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9815;</div>");
         break;
-    case 4:
+    case 'Q':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9813;</div>");
         break;
-    case 5:
+    case 'K':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9812;</div>");
         break;
-    case 6:
+    case 'P':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9817;</div>");
         break;
-    case 7:
+    case 'p':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9823;</div>");
         break;
-    case 8:
+    case 'r':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9820;</div>");
         break;
-    case 9:
+    case 'n':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9822;</div>");
         break;
-    case 10:
+    case 'b':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9821;</div>");
         break;
-    case 11:
+    case 'q':
         fprintf(html_file, "\n\t\t<div class = \"figure\">&#9819;</div>");
         break;
-    case 12:
-        fprintf(html_file, "\n\t\t<div class = \"figure\">&#9813;</div>");
+    case 'k':
+        fprintf(html_file, "\n\t\t<div class = \"figure\">&#9818;</div>");
         break;
     }
     return;
 }
 
-void fillAndSetBoard(int board[8][8])
+void fillAndSetBoard(char board[8][8])
 {
+    bool BLACK_OR_WHITE = false; // true = white, false = black
     FILE* html_file;
     html_file = fopen("index.html", "w+");
     fprintf(html_file, "<!DOCTYPE html>\n<html>\n<head>\n\t<title>Шахматы</title>\n\t<meta charset=\"utf-8\">\n\t<title>Chess</title>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n\t<link rel=\"shortcut icon\" href=\"https://image.flaticon.com/icons/png/512/32/32658.png\"/>\n\t<script src=\"\"></script>\n\t</head>\n<body>\n\t");
     fprintf(html_file, "\n\t<div class = \"board\">");
     for (int i = 0; i < 8; ++i) {
-        Flag = !(Flag);
+        BLACK_OR_WHITE = !(BLACK_OR_WHITE);
         for (int j = 0; j < 8; ++j) {
-            if (Flag == true)
+            if (BLACK_OR_WHITE == true)
                 fprintf(html_file, "\n\t<div class = \"square white\">");
             else
                 fprintf(html_file, "\n\t<div class = \"square black\">");
             setFigures(board[i][j], html_file);
             fprintf(html_file, "\n\t</div>");
-            Flag = !(Flag);
+            BLACK_OR_WHITE = !(BLACK_OR_WHITE);
         }
     }
     fprintf(html_file, "\n\t</div>\n</body>\n</html>");
