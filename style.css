@@ -1,10 +1,12 @@
 .board{
   width: 656px;
   height: 656px;
-  border: 10px solid;
+  border: 1px solid;
   display: block;
   margin: auto;
   margin-top: 7%;
+  box-shadow: 0 0 4px 10px black; /* Параметры тени */
+  padding: 0px;
 }
 .square {
   float: left;
@@ -22,7 +24,12 @@
   background-color:  #eee;
 }
 .figure {
-  font-size: 60px;
+  font-size: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
 }
 .figure:hover {
@@ -36,40 +43,14 @@
   justify-content: center;
   margin: auto;
 }
-.l {
-
+::selection {
+  background: transparent;
 }
-.p {
-
-}
-.k {
-
-}
-.f {
-
-}
-.s {
-
-}
-.h {
-
-}
-.L {
-
-}
-.P {
-
-}
-.K {
-
-}
-.F {
-
-}
-.S {
-
-}
-.H {
-
+::-moz-selection {
+  background: transparent;
 }
 
+body{ 
+  background: url(https://images.wallpaperscraft.ru/image/fon_pyatna_temnyy_91678_2560x1600.jpg) no-repeat 0 0%;
+  background-size: 100%;
+}
